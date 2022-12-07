@@ -1,10 +1,12 @@
 import * as React from "react"
-import Header from "./Header"
+import Footer from "./footer"
+import Nav from "./Nav"
+import "normalize.css"
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
+      <Nav />
       {children}
       <Footer />
     </>

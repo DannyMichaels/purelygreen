@@ -1,14 +1,16 @@
-import * as React from "react"
+import React from "react"
+import Hero from "../components/Hero"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const IndexPage = () => <Layout>Index</Layout>
+function Index() {
+  return (
+    <Layout>
+      <Hero />
+    </Layout>
+  )
+}
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
 export const Head = () => <Seo title="Purely Green" />
 
-export default IndexPage
+export default Index
