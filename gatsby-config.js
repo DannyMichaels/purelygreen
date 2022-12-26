@@ -15,6 +15,19 @@ module.exports = {
     siteUrl: `https://www.purelygreenband.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Inter",
+              variants: ["300", "400", "500", "600", "700"],
+            },
+          ],
+        },
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

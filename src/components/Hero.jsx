@@ -23,7 +23,11 @@ function Hero() {
 
       <HeroTextContainer>
         <div className="hero-text">
-          <h1>Purely Green</h1>
+          <h1>
+            Purely
+            <br />
+            <span>Green</span>
+          </h1>
         </div>
       </HeroTextContainer>
     </HeroContainer>
@@ -54,46 +58,54 @@ const HeroContainer = styled.div`
       }
     }
   }
+
+  &::after {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); // black overlay for text to be readable
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+  }
 `
 
 const HeroTextContainer = styled.div`
   position: absolute;
-  top: 0;
-  left: 10%;
+  top: 50%;
+  left: 50%;
   height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  transform: translate(-50%, -50%);
+
   .hero-text {
-    color: #fff;
     h1 {
+      color: #fff;
       font-size: 40px;
       text-align: left;
-      text-transform: uppercase;
-      font-size: clamp(22px, 10vw, 128px);
+      text-transform: lowercase;
+      font-size: clamp(40px, 10vw, 132px);
       max-width: 300px;
       padding: 0;
       margin: 0;
       margin-top: 12px;
       margin-bottom: 12px;
-    }
-    h4 {
-      font-size: 24px;
-      text-transform: uppercase;
-      font-weight: 300;
-      line-height: 24px;
-      font-size: clamp(14px, 2vw, 24px);
-    }
-    h2 {
-      margin: 0;
-      padding: 0;
-      font-family: "Exo", sans-serif;
-      font-size: 24px;
-      text-transform: uppercase;
-      font-weight: 300;
-      line-height: 24px;
-      font-size: clamp(14px, 2vw, 24px);
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+
+      span {
+        color: #62c980;
+      }
     }
   }
 `
