@@ -94,7 +94,7 @@ const HeroTextContainer = styled.div`
       font-size: 40px;
       text-align: left;
       text-transform: lowercase;
-      font-size: clamp(40px, 10vw, 132px);
+      font-size: clamp(40px, 16vw, 132px);
       max-width: 300px;
       padding: 0;
       margin: 0;
