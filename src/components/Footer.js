@@ -38,10 +38,10 @@ function Footer() {
   return (
     <StyledFooter>
       <StaticImage
-        src="../assets/images/footer-image.png"
-        layout="contained"
+        src="../assets/images/footer.svg"
         placeholder="blurred"
-        alt="footer"
+        alt="band playing"
+        layout="fullWidth"
       />
 
       <div className="footer__content">
@@ -75,6 +75,7 @@ const StyledFooter = styled.footer`
     justify-content: center;
     width: 100%;
     flex-direction: column;
+    z-index: 4;
   }
 
   .footer__content__links {
