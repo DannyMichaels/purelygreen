@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+
+import "./src/styles/global.css"
+
+// Import Swiper styles
+import "swiper/css"
+import "swiper/css/effect-coverflow"
+import "swiper/css/pagination"

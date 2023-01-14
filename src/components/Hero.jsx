@@ -13,13 +13,13 @@ function Hero() {
         layout="fullWidth"
       />
 
-      {/* <StaticImage
+      <StaticImage
         src="../assets/images/hero-desktop.svg"
         alt="Purely Green preforming on stage"
         className="hero-img desktop"
-        placeholder="tracedSVG"
+        placeholder="blurred"
         layout="fullWidth"
-      /> */}
+      />
 
       <HeroTextContainer>
         <div className="hero-text">

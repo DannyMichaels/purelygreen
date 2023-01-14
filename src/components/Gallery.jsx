@@ -4,6 +4,12 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import useMediaQuery from "../hooks/useMediaQuery"
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react"
+
+// import required modules
+import { EffectCoverflow, Pagination } from "swiper"
+
 const query = graphql`
   query GetAirtableGalleryImages {
     allAirtable(filter: { table: { eq: "GalleryImages" } }) {
@@ -24,7 +30,34 @@ const query = graphql`
 `
 
 const WrapperComponent = ({ children, isSmScreen }) =>
-  isSmScreen ? <Carousel>{children}</Carousel> : <Grid>{children}</Grid>
+  isSmScreen ? (
+    <Swiper
+      grabCursor={true}
+      effect={"coverflow"}
+      spaceBetween={5}
+      slidesPerView={"2"}
+      loop={true}
+      lazyOptions={{
+        loadingClass: "loading-carousel",
+      }}
+      centeredSlides={true}
+      coverflowEffect={{
+        rotate: 50,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      pagination={{
+        el: ".swiper-pagination",
+      }}
+      modules={[EffectCoverflow, Pagination]}
+    >
+      {children}
+    </Swiper>
+  ) : (
+    <Grid>{children}</Grid>
+  )
 
 function Gallery({ children }) {
   const [currentImageIdx, setCurrentImageIdx] = React.useState(0)
@@ -48,6 +81,21 @@ function Gallery({ children }) {
 
           const imageSrc = getImage(image?.localFiles[0].childrenImageSharp[0])
 
+          if (isSmScreen) {
+            return (
+              <SwiperSlide key={id}>
+                <GatsbyImage
+                  style={{
+                    borderRadius: "16px",
+                  }}
+                  image={imageSrc}
+                  className="gallery__image"
+                  alt={`Purely Green gallery image ${idx} of ${arr.length}`}
+                />
+              </SwiperSlide>
+            )
+          }
+
           return (
             <div key={id}>
               <GatsbyImage
@@ -65,10 +113,6 @@ function Gallery({ children }) {
     </div>
   )
 }
-
-const Carousel = styled.div`
-  background: red;
-`
 
 const Grid = styled.div`
   display: flex;

@@ -98,7 +98,7 @@ const HamburgerMenu = styled.div`
       flex-direction: row;
       width: 100%;
       gap: 10px;
-      padding: 1rem;
+      /* padding: 1rem; */
       transition: transform 0.5s ease-in-out;
       justify-content: flex-end;
       @media screen and (max-width: 768px) {
@@ -148,6 +148,7 @@ const LinksList = styled.ul`
   padding-left: 0;
   margin-left: 0;
   list-style: none;
+  /* padding: 0; */
 
   li {
     margin-bottom: 32px;
@@ -160,11 +161,17 @@ const LinksList = styled.ul`
       line-height: 48px;
       text-decoration: none;
     }
+
+    @media screen and (min-width: 768px) {
+      a {
+        font-size: 32px;
+      }
+      margin-right: 20px;
+    }
   }
 
   @media screen and (max-width: 768px) {
     margin-top: auto;
-    padding: 20px;
   }
 `
 
