@@ -36,13 +36,13 @@ const WrapperComponent = ({ children, isSmScreen }) => (
       <Swiper
         grabCursor={true}
         effect={"coverflow"}
-        spaceBetween={5}
+        spaceBetween={2}
         slidesPerView={"2"}
         loop={true}
         lazyOptions={{
           loadingClass: "loading-carousel",
         }}
-        centeredSlides={true}
+        centeredSlides={false}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -117,13 +117,15 @@ function Gallery({ children }) {
 
           if (isSmScreen) {
             return (
-              <SwiperSlide key={id}>
+              <SwiperSlide key={id} style={{ height: "364px", width: "364px" }}>
                 <GatsbyImage
                   style={{
                     borderRadius: "16px",
-                    width: "364px",
-                    height: "364px",
+                    height: "100%",
+                    width: "100%",
                   }}
+                  objectPosition={"15% 15%"}
+                  objectFit="fill"
                   image={imageSrc}
                   className="gallery__image"
                   alt={`Purely Green gallery image ${idx} of ${arr.length}`}
