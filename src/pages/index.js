@@ -3,13 +3,19 @@ import Contact from "../components/Contact"
 import Hero from "../components/Hero"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Footer from "../components/Footer"
+import Gallery from "../components/Gallery"
 
 function Index() {
   return (
     <Layout>
       <Hero />
 
-      <Contact />
+      <Gallery />
+      <div className="footer-contact__container">
+        <Contact />
+        <Footer />
+      </div>
     </Layout>
   )
 }

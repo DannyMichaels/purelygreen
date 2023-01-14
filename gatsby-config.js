@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -50,6 +52,21 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.GATSBY_AIRTABLE_API, // may instead specify via env, see below
+        concurrency: 5, // default, see using markdown and attachments for more information
+        tables: [
+          {
+            baseId: process.env.GATSBY_AIRTABLE_BASE,
+            tableName: `GalleryImages`,
+            mapping: { image: `fileNode` },
+          },
+        ],
       },
     },
   ],

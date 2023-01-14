@@ -74,7 +74,7 @@ const Nav = () => {
 
 const HamburgerMenu = styled.div`
   width: 100%;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   background: transparent;
@@ -90,15 +90,22 @@ const HamburgerMenu = styled.div`
     transition: all 0.2s ease-in-out;
     transform: translateY(-100%);
 
+    .nav__mobile__links {
+      padding: 20px;
+    }
     ul {
-      @media screen and (max-width: 768px) {
-        transform: translateY(-300%);
-      }
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 10px;
       padding: 1rem;
-      /* transform: translateY(100%); */
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
       transition: transform 0.5s ease-in-out;
+      justify-content: flex-end;
+      @media screen and (max-width: 768px) {
+        justify-content: center;
+        transform: translateY(-300%);
+        flex-direction: column;
+      }
     }
 
     /* @media screen and (max-width: 768px) {
@@ -158,9 +165,6 @@ const LinksList = styled.ul`
   @media screen and (max-width: 768px) {
     margin-top: auto;
     padding: 20px;
-
-    display: flex;
-    flex-direction: column;
   }
 `
 
