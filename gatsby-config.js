@@ -17,6 +17,7 @@ module.exports = {
     siteUrl: `https://www.purelygreenband.com`,
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {

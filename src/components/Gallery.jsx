@@ -20,7 +20,7 @@ const query = graphql`
           image {
             localFiles {
               childrenImageSharp {
-                gatsbyImageData(placeholder: BLURRED, height: 364, width: 364)
+                gatsbyImageData(placeholder: BLURRED, sizes: "364x364, 500x500")
               }
             }
           }
@@ -103,7 +103,7 @@ function Gallery({ children }) {
 
         <div>|</div>
 
-        <div>@purelygreenband</div>
+        <div className="gallery__text">@purelygreenband</div>
       </div>
 
       <WrapperComponent isSmScreen={isSmScreen}>
@@ -121,6 +121,8 @@ function Gallery({ children }) {
                 <GatsbyImage
                   style={{
                     borderRadius: "16px",
+                    width: "364px",
+                    height: "364px",
                   }}
                   image={imageSrc}
                   className="gallery__image"
@@ -135,7 +137,11 @@ function Gallery({ children }) {
               <GatsbyImage
                 style={{
                   borderRadius: "16px",
+                  width: "364px",
+                  height: "364px",
                 }}
+                objectFit="cover"
+                objectPosition={"15% 15%"}
                 image={imageSrc}
                 className="gallery__image"
                 alt={`Purely Green gallery image ${idx} of ${arr.length}`}
