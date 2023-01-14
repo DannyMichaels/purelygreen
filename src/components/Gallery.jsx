@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import useMediaQuery from "../hooks/useMediaQuery"
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -29,35 +30,38 @@ const query = graphql`
   }
 `
 
-const WrapperComponent = ({ children, isSmScreen }) =>
-  isSmScreen ? (
-    <Swiper
-      grabCursor={true}
-      effect={"coverflow"}
-      spaceBetween={5}
-      slidesPerView={"2"}
-      loop={true}
-      lazyOptions={{
-        loadingClass: "loading-carousel",
-      }}
-      centeredSlides={true}
-      coverflowEffect={{
-        rotate: 50,
-        stretch: 0,
-        depth: 200,
-        modifier: 1,
-        slideShadows: true,
-      }}
-      pagination={{
-        el: ".swiper-pagination",
-      }}
-      modules={[EffectCoverflow, Pagination]}
-    >
-      {children}
-    </Swiper>
-  ) : (
-    <Grid>{children}</Grid>
-  )
+const WrapperComponent = ({ children, isSmScreen }) => (
+  <div style={{ marginTop: "20px" }}>
+    {isSmScreen ? (
+      <Swiper
+        grabCursor={true}
+        effect={"coverflow"}
+        spaceBetween={5}
+        slidesPerView={"2"}
+        loop={true}
+        lazyOptions={{
+          loadingClass: "loading-carousel",
+        }}
+        centeredSlides={true}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 200,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={{
+          el: ".swiper-pagination",
+        }}
+        modules={[EffectCoverflow, Pagination]}
+      >
+        {children}
+      </Swiper>
+    ) : (
+      <Grid>{children}</Grid>
+    )}
+  </div>
+)
 
 function Gallery({ children }) {
   const [currentImageIdx, setCurrentImageIdx] = React.useState(0)
@@ -68,9 +72,39 @@ function Gallery({ children }) {
   // const nodes = data.allFile.nodes;
   const nodes = data.allAirtable.nodes
 
+  const socialLinks = (
+    <>
+      <a
+        href="https://www.facebook.com/PurelyGreenBand"
+        target="_blank"
+        rel="no-referrer"
+      >
+        <FaFacebook color="#000" fontSize={32} />
+      </a>
+      <a
+        href="https://www.instagram.com/purelygreenband"
+        target="_blank"
+        rel="no-referrer"
+      >
+        <FaInstagram color="#000" fontSize={32} />
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" rel="no-referrer">
+        <FaYoutube color="#000" fontSize={32} />
+      </a>
+    </>
+  )
+
   return (
-    <div style={{ padding: "32px" }}>
+    <div style={{ paddingBottom: "32px", paddingTop: "32px" }}>
       <Title>Gallery</Title>
+
+      <div className="gallery__meta">
+        <div className="gallery__socialLinks">{socialLinks}</div>
+
+        <div>|</div>
+
+        <div>@purelygreenband</div>
+      </div>
 
       <WrapperComponent isSmScreen={isSmScreen}>
         {nodes.map((node, idx, arr) => {

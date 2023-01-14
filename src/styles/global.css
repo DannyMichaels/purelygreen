@@ -1,0 +1,20 @@
+.gallery__meta {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+}
+
+.gallery__socialLinks > a {
+  color: #1f2937;
+  margin-right: 20px;
+}
+
+.gallery__text {
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
