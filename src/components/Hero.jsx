@@ -35,6 +35,7 @@ function Hero() {
 }
 
 const HeroContainer = styled.div`
+  background: #000;
   height: 100vh;
   position: relative;
   .hero-img {

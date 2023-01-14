@@ -6,7 +6,7 @@ import Button from "./Button"
 
 function Contact() {
   return (
-    <Container>
+    <Container id="contact">
       <StaticImage
         className="contact__weed"
         src="../assets/images/buncha-weed.svg"
