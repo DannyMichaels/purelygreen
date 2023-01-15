@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
@@ -9,7 +9,8 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper"
+import { EffectCoverflow, Scrollbar } from "swiper"
+import { BsArrowRightCircle, BsArrowLeftCircle } from "react-icons/bs"
 
 const query = graphql`
   query GetAirtableGalleryImages {
@@ -30,10 +31,20 @@ const query = graphql`
   }
 `
 
-const WrapperComponent = ({ children, isSmScreen }) => (
+const WrapperComponent = ({
+  children,
+  isSmScreen,
+  onSwiper,
+  onSlideChange,
+  // swiper,
+}) => (
   <div style={{ marginTop: "20px" }}>
     {isSmScreen ? (
       <Swiper
+        // initialSlide={activeIndex}
+        slideActiveClass="swiper-slide-active"
+        onSwiper={onSwiper}
+        onSlideChange={onSlideChange}
         grabCursor={true}
         effect={"coverflow"}
         spaceBetween={5}
@@ -42,7 +53,7 @@ const WrapperComponent = ({ children, isSmScreen }) => (
         lazyOptions={{
           loadingClass: "loading-carousel",
         }}
-        centeredSlides={false}
+        centeredSlides={true}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -50,10 +61,10 @@ const WrapperComponent = ({ children, isSmScreen }) => (
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{
-          el: ".swiper-pagination",
+        scrollbar={{
+          el: ".swiper-scrollbar",
         }}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Scrollbar]}
       >
         {children}
       </Swiper>
@@ -64,7 +75,7 @@ const WrapperComponent = ({ children, isSmScreen }) => (
 )
 
 function Gallery({ children }) {
-  const [currentImageIdx, setCurrentImageIdx] = React.useState(0)
+  const [swiper, setSwiper] = useState(null)
 
   const isSmScreen = useMediaQuery("(max-width: 768px)")
 
@@ -94,6 +105,8 @@ function Gallery({ children }) {
     </>
   )
 
+  const onSlideChange = idx => {}
+
   return (
     <div style={{ paddingBottom: "32px", paddingTop: "32px" }} id="gallery">
       <Title>Gallery</Title>
@@ -106,7 +119,11 @@ function Gallery({ children }) {
         <div className="gallery__text">@purelygreenband</div>
       </div>
 
-      <WrapperComponent isSmScreen={isSmScreen}>
+      <WrapperComponent
+        isSmScreen={isSmScreen}
+        onSwiper={setSwiper}
+        onSlideChange={onSlideChange}
+      >
         {nodes.map((node, idx, arr) => {
           const {
             id,
@@ -117,7 +134,11 @@ function Gallery({ children }) {
 
           if (isSmScreen) {
             return (
-              <SwiperSlide key={id} style={{ height: "364px", width: "364px" }}>
+              <SwiperSlide
+                key={id}
+                style={{ height: "364px", width: "364px" }}
+                className={idx === 0 && "swiper-slide-active"}
+              >
                 <GatsbyImage
                   style={{
                     borderRadius: "16px",
@@ -152,6 +173,23 @@ function Gallery({ children }) {
           )
         })}
       </WrapperComponent>
+
+      {isSmScreen && (
+        <div className="gallery__carousel__pagination">
+          <BsArrowLeftCircle
+            fontSize={42}
+            cursor="pointer"
+            color="#62C980"
+            onClick={() => swiper.slidePrev()}
+          />
+          <BsArrowRightCircle
+            fontSize={42}
+            color="#62C980"
+            cursor="pointer"
+            onClick={() => swiper.slideNext()}
+          />
+        </div>
+      )}
     </div>
   )
 }
