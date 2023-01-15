@@ -36,7 +36,7 @@ const WrapperComponent = ({ children, isSmScreen }) => (
       <Swiper
         grabCursor={true}
         effect={"coverflow"}
-        spaceBetween={2}
+        spaceBetween={5}
         slidesPerView={"2"}
         loop={true}
         lazyOptions={{
@@ -125,7 +125,7 @@ function Gallery({ children }) {
                     width: "100%",
                   }}
                   objectPosition={"15% 15%"}
-                  objectFit="fill"
+                  objectFit="cover"
                   image={imageSrc}
                   className="gallery__image"
                   alt={`Purely Green gallery image ${idx} of ${arr.length}`}
