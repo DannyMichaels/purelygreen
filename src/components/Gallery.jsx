@@ -37,7 +37,7 @@ const WrapperComponent = ({ children, isSmScreen }) => (
         grabCursor={true}
         effect={"coverflow"}
         spaceBetween={5}
-        slidesPerView={"2"}
+        slidesPerView={"auto"}
         loop={true}
         lazyOptions={{
           loadingClass: "loading-carousel",
