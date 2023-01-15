@@ -95,7 +95,7 @@ function Gallery({ children }) {
   )
 
   return (
-    <div style={{ paddingBottom: "32px", paddingTop: "32px" }}>
+    <div style={{ paddingBottom: "32px", paddingTop: "32px" }} id="gallery">
       <Title>Gallery</Title>
 
       <div className="gallery__meta">
