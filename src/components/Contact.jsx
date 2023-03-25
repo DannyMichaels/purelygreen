@@ -65,11 +65,6 @@ const Container = styled.section`
   background: #62c980;
   width: 100%;
   height: 100%;
-  /* min-height: 500px; */
-
-  @media screen and (min-width: 1000px) {
-    /* min-height: 700px; */
-  }
 
   position: relative;
   .contact__weed {
@@ -84,11 +79,8 @@ const Container = styled.section`
 
 const Form = styled.form`
   z-index: 4;
-
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   gap: 16px;
   width: 100%;
   max-width: 1100px;

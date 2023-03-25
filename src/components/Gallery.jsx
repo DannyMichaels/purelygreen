@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import useMediaQuery from "../hooks/useMediaQuery"
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -11,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 // import required modules
 import { EffectCoverflow, Scrollbar } from "swiper"
 import { BsArrowRightCircle, BsArrowLeftCircle } from "react-icons/bs"
+import SocialLinks from "./SocialLinks"
 
 const query = graphql`
   query GetAirtableGalleryImages {
@@ -74,7 +74,7 @@ const WrapperComponent = ({
   </div>
 )
 
-function Gallery({ children }) {
+function Gallery() {
   const [swiper, setSwiper] = useState(null)
 
   const isSmScreen = useMediaQuery("(max-width: 768px)")
@@ -83,47 +83,19 @@ function Gallery({ children }) {
   // const nodes = data.allFile.nodes;
   const nodes = data.allAirtable.nodes
 
-  const socialLinks = (
-    <>
-      <a
-        href="https://www.facebook.com/PurelyGreenBand"
-        target="_blank"
-        rel="no-referrer"
-      >
-        <FaFacebook color="#000" fontSize={32} />
-      </a>
-      <a
-        href="https://www.instagram.com/purelygreenband"
-        target="_blank"
-        rel="no-referrer"
-      >
-        <FaInstagram color="#000" fontSize={32} />
-      </a>
-      <a href="https://www.youtube.com/" target="_blank" rel="no-referrer">
-        <FaYoutube color="#000" fontSize={32} />
-      </a>
-    </>
-  )
-
-  const onSlideChange = idx => {}
-
   return (
     <div style={{ paddingBottom: "32px", paddingTop: "32px" }} id="gallery">
       <Title>Gallery</Title>
 
       <div className="gallery__meta">
-        <div className="gallery__socialLinks">{socialLinks}</div>
+        <SocialLinks color="#1f2937" />
 
         <div>|</div>
 
         <div className="gallery__text">@purelygreenband</div>
       </div>
 
-      <WrapperComponent
-        isSmScreen={isSmScreen}
-        onSwiper={setSwiper}
-        onSlideChange={onSlideChange}
-      >
+      <WrapperComponent isSmScreen={isSmScreen} onSwiper={setSwiper}>
         {nodes.map((node, idx, arr) => {
           const {
             id,
