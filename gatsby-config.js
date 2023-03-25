@@ -41,19 +41,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `purely-green-band`,
-        short_name: `purely-green`,
-        start_url: `/`,
-        background_color: `#1D372A`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#1D372A`,
-        display: `minimal-ui`,
-      },
-    },
 
     {
       resolve: `gatsby-source-airtable`,
