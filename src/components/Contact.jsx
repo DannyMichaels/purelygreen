@@ -14,34 +14,40 @@ function Contact() {
         layout="fullWidth"
       />
 
-      <Form>
+      <Form action="https://formspree.io/f/mgebvezb" method="POST">
         <Title>Contact Us</Title>
 
         <div>
-          <Input label="Email" id="email" placeholder="youraddress@email.com" />
+          <Input
+            label="Email"
+            id="email"
+            name="email"
+            placeholder="youraddress@email.com"
+          />
         </div>
 
         <div>
-          <Input label="Name" id="name" placeholder="Your name" />
+          <Input label="Name" id="name" name="name" placeholder="Your name" />
         </div>
 
         <div>
           <Input
             label="How can we help you?"
             id="message"
+            name="message"
             placeholder="Write your concern here..."
             component="textarea"
           />
         </div>
 
         <Button
+          type="submit"
           style={{
             width: "100px",
             marginLeft: "32px",
             marginRight: "32px",
             marginTop: "20px",
           }}
-          onClick={() => {}}
         >
           Submit
         </Button>
