@@ -39,9 +39,9 @@ function Footer() {
     <StyledFooter>
       <StaticImage
         src="../assets/images/footer.svg"
-        placeholder="blurred"
         alt="band playing"
         layout="fullWidth"
+        className="footer__img"
       />
 
       <div className="footer__content">
@@ -62,20 +62,29 @@ function Footer() {
 }
 
 const StyledFooter = styled.footer`
-  display: flex;
+  /* display: flex; */
   background: #000;
   width: 100%;
   height: 100%;
   position: relative;
-  min-height: 400px;
+  /* min-height: 500px; */
 
   .footer__content {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+
     flex-direction: column;
-    z-index: 4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .footer__img {
+    height: 100%;
+    width: 100%;
   }
 
   .footer__content__links {

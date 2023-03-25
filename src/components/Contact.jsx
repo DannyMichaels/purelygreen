@@ -47,6 +47,7 @@ function Contact() {
             marginLeft: "32px",
             marginRight: "32px",
             marginTop: "20px",
+            marginBottom: "20px",
           }}
         >
           Submit
@@ -64,7 +65,12 @@ const Container = styled.section`
   background: #62c980;
   width: 100%;
   height: 100%;
-  min-height: 652px;
+  /* min-height: 500px; */
+
+  @media screen and (min-width: 1000px) {
+    /* min-height: 700px; */
+  }
+
   position: relative;
   .contact__weed {
     position: absolute;
@@ -89,6 +95,7 @@ const Form = styled.form`
   margin-left: auto;
   margin-right: auto;
 `
+
 const Title = styled.h1`
   font-family: "Inter", sans-serif;
   font-size: 48px;
