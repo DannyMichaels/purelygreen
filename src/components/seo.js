@@ -17,6 +17,7 @@ function Seo({ description, title, children }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -25,33 +26,25 @@ function Seo({ description, title, children }) {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const siteUrl = site.siteMetadata?.siteUrl
+  const ogImage = `${siteUrl}/og-image.jpg`
 
   return (
     <>
-      {/* <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title> */}
-      <title>{title}</title>
+      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
-
-      <meta
-        name="image"
-        content="https://purelygreenmain.gatsbyjs.io/og-image.jpg"
-      />
-      <meta
-        name="og:image:safe"
-        content="https://purelygreenmain.gatsbyjs.io/og-image.jpg"
-      />
-      <meta
-        property="og:image"
-        content="https://purelygreenmain.gatsbyjs.io/og-image.jpg"
-      />
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
+      <meta property="og:url" content={siteUrl} />
+      <meta property="og:site_name" content={defaultTitle} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={ogImage} />
       {children}
     </>
   )

@@ -13,7 +13,7 @@ module.exports = {
   siteMetadata: {
     title: `Purely Green`,
     description: `Purely Green is a 5 piece band from long island`,
-    author: `@gatsbyjs`,
+    author: `@purelygreen`,
     siteUrl: `https://www.purelygreenband.com`,
   },
   plugins: [
