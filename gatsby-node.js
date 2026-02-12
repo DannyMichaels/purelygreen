@@ -5,6 +5,18 @@
  */
 
 /**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type AirtableData {
+      key: String
+      value: String
+    }
+  `)
+}
+
+/**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ actions }) => {}

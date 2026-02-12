@@ -5,12 +5,14 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Footer from "../components/Footer"
 import Gallery from "../components/Gallery"
+import Music from "../components/Music"
 
 function Index() {
   return (
     <Layout>
       <Hero />
 
+      <Music />
       <Gallery />
       <div className="footer-contact__container">
         <Contact />

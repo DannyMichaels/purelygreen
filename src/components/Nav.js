@@ -16,6 +16,9 @@ const Nav = () => {
   const linksJSX = (
     <LinksList>
       <li>
+        <Link to="#music">Music</Link>
+      </li>
+      <li>
         <Link to="#videos">Videos</Link>
       </li>
       <li>

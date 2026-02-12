@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C \"C:\\\\Users\\\\itzda\\\\projects\\\\purelygreen\" remote -v)"
+      "Bash(git -C \"C:\\\\Users\\\\itzda\\\\projects\\\\purelygreen\" remote -v)",
+      "Bash(npm ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(source:*)",
+      "Bash(curl:*)",
+      "Bash(python -m json.tool:*)",
+      "Bash(npx gatsby clean:*)",
+      "Bash(npx gatsby build:*)"
     ]
   }
 }

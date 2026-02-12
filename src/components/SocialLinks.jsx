@@ -1,22 +1,49 @@
 import React from "react"
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
+import { useStaticQuery, graphql } from "gatsby"
+import {
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaSpotify,
+  FaApple,
+} from "react-icons/fa"
 
-const FACEBOOK_LINK = `https://www.facebook.com/PurelyGreenBand`
-const INSTAGRAM_LINK = `https://www.instagram.com/purelygreenband`
-const YOUTUBE_LINK = `https://www.youtube.com/@purelygreenbandli`
+const SOCIAL_ICONS = {
+  SOCIALS_FACEBOOK_URL: FaFacebook,
+  SOCIALS_INSTAGRAM_URL: FaInstagram,
+  SOCIALS_YOUTUBE_URL: FaYoutube,
+  MUSIC_SPOTIFY_URL: FaSpotify,
+  MUSIC_APPLE_URL: FaApple,
+}
+
+const query = graphql`
+  query GetSocialConstants {
+    allAirtable(filter: { table: { eq: "Constants" } }) {
+      nodes {
+        data {
+          key
+          value
+        }
+      }
+    }
+  }
+`
 
 function SocialLinks({ fontSize = 32, color = "#fff" }) {
+  const data = useStaticQuery(query)
+  const nodes = data.allAirtable.nodes
+
   return (
     <>
-      <a href={FACEBOOK_LINK} target="_blank" rel="no-referrer">
-        <FaFacebook color={color} fontSize={fontSize} />
-      </a>
-      <a href={INSTAGRAM_LINK} target="_blank" rel="no-referrer">
-        <FaInstagram color={color} fontSize={fontSize} />
-      </a>
-      <a href={YOUTUBE_LINK} target="_blank" rel="no-referrer">
-        <FaYoutube color={color} fontSize={fontSize} />
-      </a>
+      {Object.entries(SOCIAL_ICONS).map(([key, Icon]) => {
+        const url = nodes.find(n => n.data.key === key)?.data?.value
+        if (!url) return null
+        return (
+          <a key={key} href={url} target="_blank" rel="noreferrer">
+            <Icon color={color} fontSize={fontSize} />
+          </a>
+        )
+      })}
     </>
   )
 }
